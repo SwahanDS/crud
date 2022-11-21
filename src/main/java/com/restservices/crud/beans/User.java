@@ -10,42 +10,72 @@ import javax.persistence.Table;
 public class User {
     
     @Id
-    @Column(name="id")
-    int id;
+    @Column(name="ps_no")
+    int ps;
 
-    @Column(name="user_name")
-    String name;
+    @Column(name="first_name")
+    String fname;
 
-    @Column(name="department")
-    String dept;
+    @Column(name="last_name")
+    String lname;
+
+    @Column(name="email")
+    String email;
+
+    @Column(name="blood_group")
+    String bg;
 
     public User() 
     {
         
     }
 
-    public User(int id, String name, String dept) {
-        this.id = id;
-        this.name = name;
-        this.dept = dept;
+    public User(int ps, String fname, String lname, String email, String bg) {
+        this.ps = ps;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.bg = bg;
     }
-    public int getId() {
-        return id;
+
+    public int getPs() {
+        return ps;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setPs(int ps) {
+        this.ps = ps;
     }
-    public String getName() {
-        return name;
+
+    public String getFname() {
+        return fname;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public void setFname(String fname) {
+        this.fname = fname;
     }
-    public String getDept() {
-        return dept;
+
+    public String getLname() {
+        return lname;
     }
-    public void setDept(String dept) {
-        this.dept = dept;
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getBg() {
+        return bg;
+    }
+
+    public void setBg(String bg) {
+        this.bg = bg;
+    }
+
 }

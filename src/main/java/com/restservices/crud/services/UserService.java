@@ -58,7 +58,7 @@ public class UserService {
         List<User>users=userRepository.findAll();
         for(User u:users)
         {
-            if(u.getName().equalsIgnoreCase(name))
+            if(u.getFname().equalsIgnoreCase(name) || u.getLname().equalsIgnoreCase(name))
                 return u;
         }
         return null;
@@ -69,7 +69,8 @@ public class UserService {
         /*user.setId(getMaxId());
         userIdMap.put(getMaxKey(),user);
         return user;*/
-        user.setId(getMaxId());
+        user.setPs(getMaxPs());
+        user.setEmail(user.getFname().toLowerCase()+"."+user.getLname().toLowerCase()+".lntecc.com");
         userRepository.save(user);
         return user;
     }
@@ -85,7 +86,7 @@ public class UserService {
         return max+1;
     }*/
 
-    public int getMaxId()
+    public int getMaxPs()
     {
         int max=0;
         /*for(int i:userIdMap.keySet())
@@ -97,8 +98,8 @@ public class UserService {
         List<User>users=userRepository.findAll();
         for(User u:users)
         {
-            if(u.getId()>=max)
-                max=u.getId();
+            if(u.getPs()>=max)
+                max=u.getPs();
         }
         return max+1;
     }
@@ -123,13 +124,13 @@ public class UserService {
         return user;
     }
 
-    public AddResponse deleteUser(int id)
+    public AddResponse deleteUser(int ps)
     {
         /*userIdMap.remove(id);*/
-        userRepository.deleteById(id);
+        userRepository.deleteById(ps);
         AddResponse res=new AddResponse();
         res.setMsg("User Deleted");
-        res.setId(id);
+        res.setPs(ps);
         return res;
     }
 }

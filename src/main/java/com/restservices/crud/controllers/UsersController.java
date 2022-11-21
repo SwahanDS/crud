@@ -65,14 +65,16 @@ public class UsersController {
         return userService.addUser(user);
     }
 
-    @PutMapping("/updateUser/{id}")
-    public ResponseEntity<User> updateUsers(@PathVariable(value = "id") int id,@RequestBody User user)
+    @PutMapping("/updateUser/{ps}")
+    public ResponseEntity<User> updateUsers(@PathVariable(value = "ps") int ps,@RequestBody User user)
     {
         try
         {
-            User ex=userService.getUser(id);
-            ex.setName(user.getName());
-            ex.setDept(user.getDept());
+            User ex=userService.getUser(ps);
+            ex.setFname(user.getFname());
+            ex.setLname(user.getLname());
+            ex.setEmail(ex.getFname().toLowerCase()+"."+ex.getLname().toLowerCase()+".lntecc.com");
+            ex.setBg(user.getBg());
             User up=userService.updateUser(ex);
             return new ResponseEntity<User>(up,HttpStatus.OK);
         }
