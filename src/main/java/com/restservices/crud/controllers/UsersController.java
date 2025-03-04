@@ -75,7 +75,7 @@ public class UsersController {
             User ex=userService.getUser(ps);
             ex.setFname(user.getFname());
             ex.setLname(user.getLname());
-            ex.setEmail(ex.getFname().toLowerCase()+"."+ex.getLname().toLowerCase()+".lntecc.com");
+            ex.setEmail(ex.getFname().toLowerCase()+"."+ex.getLname().toLowerCase()+"@lntecc.com");
             ex.setBg(user.getBg());
             User up=userService.updateUser(ex);
             return new ResponseEntity<User>(up,HttpStatus.OK);
